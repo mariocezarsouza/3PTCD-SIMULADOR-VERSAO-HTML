@@ -1,0 +1,46 @@
+SIMULADOR INTELIGENTE DE ARMAZENAGEM – UCE II
+Versão 2.1 – PACOTE WINDOWS
+
+O simulador é um único arquivo HTML. Funciona offline em qualquer navegador
+moderno (Edge, Chrome, Firefox), sem Python, sem internet e sem servidor.
+
+USAR AGORA
+  Dê dois cliques em Simulador_Armazenagem_UCE_II.html.
+
+GERAR O INSTALADOR (RECOMENDADO)
+  1. Instale o Inno Setup 6 (https://jrsoftware.org/isdl.php).
+  2. Dê dois cliques em GERAR_INSTALADOR.bat
+     (ou abra installer.iss no Inno Setup e clique em Compile).
+  3. O instalador ficará em installer_output\.
+  O instalador copia o HTML para o computador e cria atalhos no menu Iniciar
+  (e, opcionalmente, na Área de Trabalho). Não precisa de Python nem de .exe.
+
+GERAR UM .EXE (OPCIONAL)
+  Só se precisar de um arquivo .exe único. Exige Python instalado.
+  Abra a pasta opcional_exe e dê dois cliques em GERAR_EXE_WINDOWS.bat.
+  O resultado ficará em opcional_exe\dist\.
+  Observação: executáveis feitos com PyInstaller às vezes são bloqueados
+  por antivírus por engano. Por isso o instalador é a opção recomendada.
+
+O QUE O SIMULADOR FAZ
+  - Capacidade do armazém com fator de ocupação e limite de pé-direito;
+  - Perda por avarias com taxa mensal e horizonte de análise;
+  - Custo de cada solução com vida útil (recompra) no horizonte;
+  - Economia líquida, ROI, payback e custo por 1% de proteção;
+  - Escolha do critério de recomendação e combinações de soluções;
+  - Gráficos: custo × perda evitada, economia líquida, custo × proteção;
+  - Sensibilidade (tornado ±20%) e simulação Monte Carlo (2.000 cenários);
+  - Cenários salvos no navegador, exportar/importar JSON, exportar CSV;
+  - Relatório em PDF pela impressão do navegador (sempre no tema claro);
+  - Tema claro/escuro e layout para celular.
+
+IMPORTANTE SOBRE OS CENÁRIOS SALVOS
+  Os cenários ficam guardados no navegador deste computador. Se trocar de
+  navegador ou limpar os dados de navegação, eles se perdem.
+  Use "Exportar JSON" para guardar uma cópia.
+  Cenários e arquivos JSON da v2.0 continuam abrindo; os campos novos
+  (ocupação, pé-direito, taxa de avaria, horizonte, vida útil...) recebem
+  os valores padrão. Os resultados mudam em relação à v2.0 porque a v2.0
+  supunha que 100% das caixas se danificavam (veja CHANGELOG.txt).
+
+Os valores padrão são ilustrativos. Substitua pelos dados reais do armazém.

@@ -1,0 +1,75 @@
+SIMULADOR INTELIGENTE DE ARMAZENAGEM – UCE II
+HISTÓRICO DE VERSÕES
+
+v2.1 (outubro/2026)
+==================
+
+Modelo de cálculo
+  - NOVO: taxa de avaria sem proteção (% das caixas por mês). A v2.0 supunha
+    que 100% das caixas se danificavam, o que inflava perdas, economia e ROI.
+  - NOVO: horizonte de análise (meses) e vida útil de cada solução. O custo
+    passa a incluir as recompras dentro do horizonte (ex.: cantoneiras).
+  - NOVO: payback (meses para o investimento se pagar).
+  - NOVO: fator de ocupação (desconta corredores) e pé-direito útil, que
+    limita o número de camadas pela altura da caixa.
+  - NOVO: escolha do critério de recomendação (economia líquida, ROI,
+    payback ou custo por 1% de proteção). Padrão: economia líquida.
+    A v2.0 usava só custo por 1% e podia recomendar uma opção com prejuízo.
+  - NOVO: avaliação opcional de combinações de soluções.
+  - NOVO: avisos automáticos (nenhuma caixa cabe, empilhamento limitado pelo
+    pé-direito, recomendada sem economia, critérios divergentes etc.).
+  - CORRIGIDO: erro de arredondamento em divisões como 7,2 ÷ 0,12, que podia
+    contar uma caixa ou camada a menos.
+
+Ciência de Dados
+  - NOVO: gráfico tornado de sensibilidade (±20% em cada parâmetro).
+  - NOVO: simulação Monte Carlo (2.000 cenários, distribuição triangular,
+    semente fixa e reprodutível), com % de vitórias, probabilidade de
+    economia positiva e faixa P5–P95.
+  - NOVO: seção "Premissas e metodologia" no relatório.
+
+Gráficos
+  - Substituído o gráfico "ROI × Proteção", que misturava escalas diferentes
+    no mesmo eixo e escondia ROI negativo, por "Economia líquida" (mostra
+    valores negativos abaixo de zero).
+  - NOVO: gráfico de dispersão custo × proteção com fronteira eficiente.
+  - Valores escritos nas barras, legendas fora do canvas, escala automática
+    e descrição acessível (aria-label) em cada gráfico.
+
+Correções e robustez
+  - CSV compatível com o Excel em português (vírgula decimal, 2 casas) e
+    contendo também os parâmetros e indicadores do cenário.
+  - Nomes de cenário escapados (impede injeção de HTML).
+  - Cenários antigos sem algum campo recebem o valor padrão (antes, o campo
+    ficava "undefined").
+  - Validação por campo, com mensagem ao lado do campo em vez de alert();
+    inteiros exigidos onde fazem sentido; quantidade 0 permitida.
+  - Possível desmarcar uma solução para tirá-la da análise.
+  - Recálculo automático ao digitar.
+  - Acesso ao localStorage protegido (o simulador funciona mesmo se o
+    navegador bloquear o armazenamento).
+  - Referências a elementos por getElementById (sem variáveis globais
+    implícitas).
+
+Interface
+  - Tema claro/escuro (segue o sistema; botão no cabeçalho).
+  - Rótulos associados aos campos, unidades visíveis, maior contraste e
+    fontes maiores.
+  - Navegação destaca a seção visível.
+  - Janela de cenários com campo de nome (sem prompt()) e confirmação para
+    excluir.
+  - Impressão sempre no tema claro, com data, cenário e premissas.
+
+Empacotamento Windows
+  - CORRIGIDO: o .exe da v2.0 (PyInstaller --onefile) abria o HTML numa pasta
+    temporária que é apagada quando o iniciador termina. O instalador agora
+    instala o próprio HTML (sem Python e sem .exe). O .exe passou a ser
+    opcional (pasta opcional_exe) e copia o HTML para
+    %LOCALAPPDATA%\SimuladorArmazenagemUCEII antes de abrir.
+  - Versão alinhada em todos os arquivos (o installer.iss dizia 3.0).
+  - NOVO: GERAR_INSTALADOR.bat localiza o Inno Setup e compila.
+
+v2.0
+====
+  Versão original: dashboard, 3 soluções, tabela, 2 gráficos, cenários,
+  JSON, CSV e PDF via impressão.
